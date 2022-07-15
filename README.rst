@@ -1,4 +1,4 @@
-Example NPM Package
-===================
+poker-range-engine
+==================
 
-`From this tutorial <https://itnext.io/step-by-step-building-and-publishing-an-npm-typescript-package-44fe7164964c>`_
+This is an npm package for evaluating range and hand matchups in poker. 

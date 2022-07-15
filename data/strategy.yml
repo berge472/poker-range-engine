@@ -1,0 +1,16 @@
+name: TestStrategy
+desc: test description
+
+
+rangesets:
+  - node: rfi/utg
+    ranges: 
+    - action: raise 
+      range: 44+, AT+, KQ+, 56s+,79s+, J8s+  
+  - node: rfi/utg+1
+    ranges: 
+    - action: raise 
+      range: 44+, AT+, KQ+, 56s+,79s+, J8s+  
+  
+
+  
