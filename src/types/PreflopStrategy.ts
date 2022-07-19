@@ -29,6 +29,20 @@ export class PreflopStrategy {
         }
     }
 
+    getNode(node: string) : RangeSet | undefined
+    {
+        let i=0; 
+        for(i =0; i < this.rangesets.length; i++)
+        {
+            if(this.rangesets[i].path == node)
+            {
+                return this.rangesets[i];
+            }
+        }
+
+        return ;
+    }
+
 
     printAll() : void 
     {
