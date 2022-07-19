@@ -1,16 +1,45 @@
 name: TestStrategy
-desc: test description
+desc: test description based on upswing online cash
 
 
 rangesets:
   - node: rfi/utg
     ranges: 
     - action: raise 
-      range: 44+, AT+, KQ+, 56s+,79s+, J8s+  
+      range: 88+, AQo+, ATs+, KTs+, QTs+
+    - action: raise/fold
+      range: A2s-A9s, 67s-9Ts,66,77 
   - node: rfi/utg+1
     ranges: 
     - action: raise 
-      range: 44+, AT+, KQ+, 56s+,79s+, J8s+  
+      range: 77+, AQo+, A8s+, A4s-A5s, KTs+, QTs+, JTs
+    - action: raise/fold
+      range: A2s,A3s,A6s,A7s,AJo,KQo, 65s-T9s, 66, K8s,K9s,Q9s,J9s
+  - node: rfi/utg+2
+    ranges: 
+    - action: raise 
+      range: 77+, AQo+, A8s+, A4s-A5s, KTs+, QTs+, JTs
+    - action: raise/fold
+      range: A2s,A3s,A6s,A7s,AJo,KQo, 65s-T9s, 55-66, K8s,K9s,Q9s,J9s
+  - node: rfi/lojack
+    ranges: 
+    - action: raise 
+      range: 77+, ATo+, KJo+, A2s+, K9s+, Q9s+, J9s+, T9s
+    - action: raise/fold
+      range: K8s, 65s-98s, 55-66
+  - node: rfi/hijack
+    ranges: 
+    - action: raise 
+      range: 55+, ATo+, KJo+, A2s+, K9s+, Q9s+, J9s+, 54s-T9s
+    - action: raise/fold
+      range: QJo, 33-44, T8s, K8s, K7s
+  - node: rfi/cutoff
+    ranges: 
+    - action: raise 
+      range: 22+, A9+, KJ+, QJ, A2s+, K6s+, Q8s+, J9s+, 54s-T9s
+    - action: raise/fold
+      range: A8, KT, QT, JT, J8s, T8s, Q7s, J7s, T7s, 97s, 86s, K3s-K5s
+
   
 
   

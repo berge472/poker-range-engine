@@ -6,20 +6,21 @@
  * 
  */
 
- const chalk = require('chalk');
+const chalk = require('chalk');
 import { Range } from "./Range";
 
 const actionColors = {
-    'raise' : '#DF2C06',
-    'raise/fold' : '#D6735D',
+    'raise' : '#8c0c0a',
+    'raise/fold' : '#8c5c5b',
     'raise/call' : '#B2321B',
     'call/fold' : '#47C8A9'
 }
 
 
 const actionColorMap = new Map([
-    ['raise' , '#DF2C06'],
-    ['raise/fold' , '#D6735D'],
+    ['raise' , '#ff0505'],
+    ['raise/fold' , '#692020'],
+    ['call', "#330680"],
     ['raise/call' , '#B2321B'],
     ['call/fold' , '#47C8A9']
 ]);
@@ -71,7 +72,7 @@ export class RangeSet{
 
         for(i=0; i < this.ranges.length; i++)
         {
-            out+= `${this.ranges[i].arrExpandedShortHand} : ${this.ranges[i].action}\n`;
+            out+= `${this.ranges[i].arrExpandedShortHand} : ${this.ranges[i].action}\n` ;
         }
 
         out+="\n";
@@ -83,22 +84,30 @@ export class RangeSet{
         allhands.forEach((h: string) => {
 
             let included = false;
-            let text = "";
+            let text = " ";
+            let color = "#b5b5b5";
+            let bgcolor = "#000000";
 
 
-            self.ranges.forEach( (r: Range) => {
+            let i=0; 
+            for(i = 0; i < this.ranges.length; i ++)
+            {
+                let r = this.ranges[i];
                 if(r.contains(h))
                 {
-                    //text+= h;
                     included = true;
-                    out+= chalk.hex(actionColorMap.get(r.action) as string)(h);
+                    color = actionColorMap.get(r.action) as string;
+                    bgcolor = actionColorMap.get(r.action) as string;
+                    text+= h + " ";
+                    break;
                 }
-            })
+            }
+           
 
             if(!included)
             {
                 //text+= '--';
-                out+= chalk.gray(h);
+                text+= h + " ";
             }
 
             if(h.length == 2)
@@ -106,8 +115,7 @@ export class RangeSet{
                 text+= " ";
             }
 
-
-            out+=text + " ";
+            out+= chalk.hex(color)(text);
 
             
             if(count == 12)
