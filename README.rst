@@ -34,9 +34,13 @@ Weighted Action and Example
 
 This example shows the RFI (Raise First In) ranges for UTG and UTG+1. In this case each `RangeSet` has 2 ranges, 1 range is a pure 'raise' range while the other is hands that can be played as either a raise or fold. The UTG+1 example shows how range actions can also be weighted. In this case hands in that range should be raised 75% of the time and folded 25%.
 
+<<<<<<< HEAD
 range follows standard shorthand
 
 .. code:: yaml 
+=======
+.. code::  yaml 
+>>>>>>> 998293d383c08a720cca9d09cf4fdb0a755364b9
 
     name: TestStrategy
     desc: test description based on upswing online cash
@@ -54,6 +58,8 @@ range follows standard shorthand
           range: 77+, AQo+, A8s+, A4s-A5s, KTs+, QTs+, JTs
         - action: {raise : .75 , fold : .25}
           range: A2s,A3s,A6s,A7s,AJo,KQo, 65s-T9s, 66, K8s,K9s,Q9s,J9s
+          
+          
 
 
 Equity Matchups 
