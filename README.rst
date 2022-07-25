@@ -31,6 +31,8 @@ This example shows the RFI (Raise First In) ranges for UTG and UTG+1. In this ca
           range: 77+, AQo+, A8s+, A4s-A5s, KTs+, QTs+, JTs
         - action: {raise : .75 , fold : .25}
           range: A2s,A3s,A6s,A7s,AJo,KQo, 65s-T9s, 66, K8s,K9s,Q9s,J9s
+          
+          
 
 Equity Matchups 
 ---------------
