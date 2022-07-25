@@ -31,12 +31,14 @@ export class Range{
     shorthand: string ="";
     arrExpandedShortHand: string[] = [];
     distributedShortHands: string[] = [];
-    action: string ="";
+    action: string = ""; 
+    actionWeights : Map<string, number>;
 
     hexcolor: string = "#DCDCDC";
 
     constructor( range?: string | any)
     {
+        this.actionWeights = new Map<string,number>();
         if(typeof range !== 'undefined')
         {
             if(typeof range === 'string')
@@ -45,7 +47,28 @@ export class Range{
             }
             else 
             {
-                this.action = range.action;
+                if(typeof(range.action) == 'string')
+                {
+                    let arrActions = range.action.split('/');
+                    arrActions.forEach((e : string) => {
+                        this.actionWeights.set(e, (1/ arrActions.length));
+                        this.action += e +"/";
+                    });
+                }
+                else 
+                {
+                    const len = Object.keys(range.action).length;
+                    for (const prop in range.action) {
+                        this.actionWeights.set(range.action[prop], (1/ len));
+                        this.action += prop +"/";
+                      }
+                }
+
+                this.action = this.action.substring(0,this.action.length -1);
+
+                console.log(this.action);
+
+
                 this.fromShortHand(range.range);
             }
         }
