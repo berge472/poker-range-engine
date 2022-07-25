@@ -17,11 +17,20 @@ export class Matchup{
     board : string[] = [];
     deck: Deck = new Deck();
     totalHands = 0;
+    
 
-
-    addParticipant( participant: MatchupParticipant) : void
+    addParticipant( participant: MatchupParticipant | string) : void
     {
-        this.participants.push(participant);
+        if( typeof(participant) == 'string')
+        {
+            let newParticipant = new MatchupParticipant(participant as string, this );
+            this.participants.push(newParticipant);
+        }
+        else 
+        {
+            participant.matchup = this;
+            this.participants.push(participant as MatchupParticipant);
+        }
     }
 
     setBoard( cards: string[])
@@ -69,23 +78,24 @@ export class Matchup{
 
         let i =0;
         let failCount = 0;
-
-        const deckHold = this.deck; //save off current state so we can reuse
+        let deckCopy = this.deck.cards;
 
         for(i =0; i < hands; i++)
         {
-            this.deck.reset();
-            const deckHold = this.deck; //save off current state so we can reuse
+            this.deck.cards = deckCopy;
             const table = new TexasHoldem(); 
 
-            //table.setBoard(this.board);
+            if(this.board.length > 0)
+            {
+                table.setBoard(this.board);
+            }
 
 
             this.participants.forEach((e) =>{
                 
                 if(e.fixedHoleCards)
                 {
-                this.deck.drawSelect(e.holeCards);
+                    this.deck.drawSelect(e.holeCards);
                 }
                 else
                 {
@@ -121,13 +131,40 @@ export class Matchup{
         }
     }
 
+    getParticipant(name: string) : MatchupParticipant | null
+    {
+        let i=0;
+        for(i=0; i < this.participants.length; i++)
+        {
+            if(this.participants[i].name == name)
+            {
+                return this.participants[i];
+            }
+        }
+
+        return null;
+    }
+
     printResults() 
     {
         let out =""; 
 
+        if(this.board.length > 0)
+        {
+            out+= ` Board: [${this.board}]\n`;
+        }
+        
         this.participants.forEach((p) => {
-            out+= `${p.name}\t\t\t${p.wins} (${p.wins * 100 / this.totalHands} %)\n`;
+            if(p.fixedHoleCards)
+            {
+                out+= `${p.name}\t\t\t\t\t${p.wins} (${p.getWinPercentage()} %)\t\t${p.holeCards} \n`;
+            }
+            else 
+            {
+                out+= `${p.name}\t\t\t\t\t${p.wins} (${p.getWinPercentage()} %)\t\t[${p.range.shorthand}] \n`;
+            }
         }); 
+
 
         console.log(out);
 

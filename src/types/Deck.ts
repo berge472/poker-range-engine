@@ -86,7 +86,7 @@ export class Deck{
         let cardA : string = short[0];
         let cardB : string = short[1];
 
-        if(short.length == 3)
+        if(short.length == 3 && short[2] == 's')
         {
             //Suited Cards 
             for(i= 0; i < 4; i++)

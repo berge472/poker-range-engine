@@ -1,7 +1,6 @@
 name: TestStrategy
 desc: test description based on upswing online cash
 
-
 rangesets:
   - node: rfi/utg
     ranges: 

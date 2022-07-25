@@ -27,3 +27,51 @@ test('strategy', () => {
   console.log(node?.print());
 
 })
+
+test('distribution', ()=>{
+
+  const r1 = new Range('JJ, JT, QJo');
+
+  const arrRq = r1.getDistributedShortHands();
+
+  let jjCount = 0; 
+  let jtsCount = 0;
+  let jtCount = 0;
+  let qjoCount = 0;
+  let otherCount = 0;
+
+
+  arrRq.forEach((e) => {
+
+    if(e == 'JJ')
+    {
+      jjCount++;
+    }
+    else if(e == 'JTs')
+    {
+      jtsCount++;
+    }
+    else if(e == 'JTo')
+    {
+      jtCount++;  
+    }
+    else if(e == 'QJo')
+    { 
+      qjoCount++;
+    }
+    else 
+    {
+      otherCount++;
+    }
+  });
+
+
+  expect(jjCount).toBe(6);
+  expect(jtsCount).toBe(4);
+  expect(jtCount).toBe(12);
+  expect(qjoCount).toBe(12);
+  expect(otherCount).toBe(0);
+  
+  console.log(arrRq);
+
+})

@@ -7,6 +7,7 @@
  */
 
 import { Deck } from "./Deck";
+import { Matchup } from "./Matchup";
 import { Range } from "./Range";
 import { RangeSet } from "./RangeSet";
 
@@ -17,9 +18,14 @@ import { RangeSet } from "./RangeSet";
     range: Range = new Range(); 
     wins : number = 0;
     name : string;
+    matchup?: Matchup ;
 
-    constructor( name: string)
+    constructor( name: string, parent? : Matchup)
     {
+        if(typeof(parent) !== 'undefined')
+        {
+            this.matchup = parent;
+        }
         this.name = name;
     }
 
@@ -54,6 +60,11 @@ import { RangeSet } from "./RangeSet";
         }
 
         return true;
+    }
+
+    getWinPercentage()
+    {
+        return Math.round(this.wins * 10000/this.matchup.totalHands ) / 100 ;
     }
 
 }

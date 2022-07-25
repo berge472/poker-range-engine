@@ -68,7 +68,7 @@ export class RangeSet{
 
         for(i=0; i < this.ranges.length; i++)
         {
-            out+= `${this.ranges[i].arrExpandedShortHand} : ${this.ranges[i].action}\n` ;
+            out+= `${this.ranges[i].shorthand} : ${this.ranges[i].action}\n` ;
         }
 
         out+="\n";
