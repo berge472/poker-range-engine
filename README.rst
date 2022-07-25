@@ -11,10 +11,33 @@ Strategy Format
 
 Strategies are stored in yaml files. They are a collection of `RangeSet` objects. Each `RangeSet` is a collection of `Range` objects each with their own actions(s). Rangesets have `node` parameter which can be used to set a path for organizing into a tree structure.  
 
+Range Shorthand
+~~~~~~~~~~~~~~~
+
+The followin notations are supported: 
+
+- single combos KK, AK, ATs
+- plus notation
+  - QQ+ = [ AA, KK, QQ ]
+  - KTs+ = [ KQs, KJs, KTs ]
+  - KTo+ = [ KQo, KJo, KTo ]
+  - KT+ = [ KQs, KQo, KJo, KJs, KTo, KTs ]
+- dash notation
+  - KK-JJ = [ KK, QQ, JJ ]
+  - AKo-ATo = [ AK, AQ, AJ, AT ]
+  - AKs-JTs = [ AKs, KQs, JTs ]
+
+.. note:: `prange <https://www.npmjs.com/package/prange>`_ is used for parsing shorthand
+
+Weighted Action and Example 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This example shows the RFI (Raise First In) ranges for UTG and UTG+1. In this case each `RangeSet` has 2 ranges, 1 range is a pure 'raise' range while the other is hands that can be played as either a raise or fold. The UTG+1 example shows how range actions can also be weighted. In this case hands in that range should be raised 75% of the time and folded 25%.
 
+range follows standard shorthand
+
 .. code:: yaml 
+
     name: TestStrategy
     desc: test description based on upswing online cash
 
@@ -31,6 +54,7 @@ This example shows the RFI (Raise First In) ranges for UTG and UTG+1. In this ca
           range: 77+, AQo+, A8s+, A4s-A5s, KTs+, QTs+, JTs
         - action: {raise : .75 , fold : .25}
           range: A2s,A3s,A6s,A7s,AJo,KQo, 65s-T9s, 66, K8s,K9s,Q9s,J9s
+
 
 Equity Matchups 
 ---------------
