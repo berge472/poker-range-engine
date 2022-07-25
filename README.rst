@@ -84,10 +84,11 @@ Matchups can be run to calculate hand equities of various holdings. Matchups can
     match.runMatchup(1000,1000);
     match.printResults();
 
+.. csv-table::
 
-|btn                                       284033 (28.4 %)         Js,Ad
-|utg                                       529681 (52.97 %)        [88+, JTs]
-|hero                                      169774 (16.98 %)        [22+, A2+, K2+, Q2+, J2+, T9-32, T8-42, T7-T2, 96-92, 85-82, 74, 73, 63, 72, 62, 52]
+  'btn','284033 (28.4 %)',"**JsAd**"
+  'utg','529681 (52.97 %)',"[88+, JTs]"
+  'hero','169774 (16.98 %)',"[22+, A2+, K2+, Q2+, J2+, T9-32, T8-42, T7-T2, 96-92, 85-82, 74, 73, 63, 72, 62, 52]"
   
 
 Matchups can also be run with known board cards 
