@@ -14,7 +14,8 @@ Strategies are stored in yaml files. They are a collection of `RangeSet` objects
 
 This example shows the RFI (Raise First In) ranges for UTG and UTG+1. In this case each `RangeSet` has 2 ranges, 1 range is a pure 'raise' range while the other is hands that can be played as either a raise or fold. The UTG+1 example shows how range actions can also be weighted. In this case hands in that range should be raised 75% of the time and folded 25%.
 
-.. code:: yaml 
+.. code::  yaml 
+
     name: TestStrategy
     desc: test description based on upswing online cash
 
