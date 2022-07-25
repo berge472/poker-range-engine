@@ -18,11 +18,13 @@ The following notations are supported:
 
 - single combos KK, AK, ATs
 - plus notation
+
   - QQ+ = [ AA, KK, QQ ]
   - KTs+ = [ KQs, KJs, KTs ]
   - KTo+ = [ KQo, KJo, KTo ]
   - KT+ = [ KQs, KQo, KJo, KJs, KTo, KTs ]
 - dash notation
+
   - KK-JJ = [ KK, QQ, JJ ]
   - AKo-ATo = [ AK, AQ, AJ, AT ]
   - AKs-JTs = [ AKs, KQs, JTs ]
